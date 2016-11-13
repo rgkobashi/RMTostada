@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		E2DC94661DD843040033D50C /* RMTostada.h in Headers */ = {isa = PBXBuildFile; fileRef = E2DC94651DD843040033D50C /* RMTostada.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E2DC948C1DD846EA0033D50C /* RMTostada.podspec in Resources */ = {isa = PBXBuildFile; fileRef = E2DC948B1DD846EA0033D50C /* RMTostada.podspec */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E2DC94621DD843030033D50C /* RMTostada.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RMTostada.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2DC94651DD843040033D50C /* RMTostada.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMTostada.h; sourceTree = "<group>"; };
 		E2DC94671DD843040033D50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E2DC948B1DD846EA0033D50C /* RMTostada.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RMTostada.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +32,7 @@
 		E2DC94581DD843030033D50C = {
 			isa = PBXGroup;
 			children = (
+				E2DC948B1DD846EA0033D50C /* RMTostada.podspec */,
 				E2DC94641DD843040033D50C /* RMTostada */,
 				E2DC94631DD843030033D50C /* Products */,
 			);
@@ -120,6 +123,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2DC948C1DD846EA0033D50C /* RMTostada.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
