@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		E2DC94661DD843040033D50C /* RMTostada.h in Headers */ = {isa = PBXBuildFile; fileRef = E2DC94651DD843040033D50C /* RMTostada.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2DC948C1DD846EA0033D50C /* RMTostada.podspec in Resources */ = {isa = PBXBuildFile; fileRef = E2DC948B1DD846EA0033D50C /* RMTostada.podspec */; };
+		E2DC948E1DD84F4D0033D50C /* RMTostadaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC948D1DD84F4D0033D50C /* RMTostadaView.swift */; };
+		E2DC94901DD84F580033D50C /* RMTostada.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2DC948F1DD84F580033D50C /* RMTostada.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +18,8 @@
 		E2DC94651DD843040033D50C /* RMTostada.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMTostada.h; sourceTree = "<group>"; };
 		E2DC94671DD843040033D50C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E2DC948B1DD846EA0033D50C /* RMTostada.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = RMTostada.podspec; sourceTree = "<group>"; };
+		E2DC948D1DD84F4D0033D50C /* RMTostadaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTostadaView.swift; sourceTree = "<group>"; };
+		E2DC948F1DD84F580033D50C /* RMTostada.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RMTostada.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 			children = (
 				E2DC94651DD843040033D50C /* RMTostada.h */,
 				E2DC94671DD843040033D50C /* Info.plist */,
+				E2DC948F1DD84F580033D50C /* RMTostada.swift */,
+				E2DC948D1DD84F4D0033D50C /* RMTostadaView.swift */,
 			);
 			path = RMTostada;
 			sourceTree = "<group>";
@@ -134,6 +140,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2DC948E1DD84F4D0033D50C /* RMTostadaView.swift in Sources */,
+				E2DC94901DD84F580033D50C /* RMTostada.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +242,7 @@
 		E2DC946B1DD843040033D50C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -244,12 +253,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kobashidevs.RMTostada;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		E2DC946C1DD843040033D50C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
