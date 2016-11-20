@@ -153,7 +153,8 @@ public struct RMTostadaStyle
  that these will include an `UIActivityIndicatorView` at the end of the text.
  
  All the tostadas will be displayed on the rootViewController view, if there is one
- (`UIApplication.sharedApplication().windows.first?.rootViewController`).
+ (`UIApplication.sharedApplication().windows.first?.rootViewController`)  so it can be used on 
+ an UITabBarController based application and all the tostadas views will be visible from every tab.
  
  This framework is based on Toast-Swift pod by Charles Scalesse (https://github.com/scalessec/Toast-Swift).
  */
