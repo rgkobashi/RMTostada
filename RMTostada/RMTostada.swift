@@ -16,9 +16,9 @@ public typealias CompletionHandler = () -> ()
 
 private class RMClosureWrapper<T>
 {
-    private let value: T
+    fileprivate let value: T
     
-    private init(value: T)
+    fileprivate init(value: T)
     {
         self.value = value
     }
@@ -42,12 +42,12 @@ public struct RMTostadaStyle
     /**
      The background color. Default is `UIColor.blackColor()` at 80% opacity.
      */
-    public var backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
+    public var backgroundColor = UIColor.black.withAlphaComponent(0.8)
     
     /**
      The text color. Default is `UIColor.whiteColor()`.
      */
-    public var textColor = UIColor.whiteColor()
+    public var textColor = UIColor.white
     
     /**
      A percentage value from 0.0 to 1.0, representing the maximum width of the tostada
@@ -87,7 +87,7 @@ public struct RMTostadaStyle
     /**
      The text font. Default is `UIFont.systemFontOfSize(16.0)`.
      */
-    public var font = UIFont.systemFontOfSize(16.0)
+    public var font = UIFont.systemFont(ofSize: 16.0)
     
     /**
      Enable or disable a shadow on the tostada view. Default is `false`.
@@ -97,7 +97,7 @@ public struct RMTostadaStyle
     /**
      The shadow color. Default is `UIColor.blackColor()`.
      */
-    public var shadowColor = UIColor.blackColor()
+    public var shadowColor = UIColor.black
     
     /**
      A value from 0.0 to 1.0, representing the opacity of the shadow.
@@ -122,20 +122,20 @@ public struct RMTostadaStyle
     /**
      The fade in/out animation duration. Default is 0.2.
      */
-    public var fadeDuration: NSTimeInterval = 0.2
+    public var fadeDuration: TimeInterval = 0.2
     
     /**
      The shift animation duration. This animation will be executed when
      a tostada view has been dismissed and there are more on the queue (on the screen),
      the subsequent tostadas will be shifted. Default is 0.2.
      */
-    public var shiftDuration: NSTimeInterval = 0.2
+    public var shiftDuration: TimeInterval = 0.2
     
     /**
      The style of the `UIActivityIndicatorView` that will be used on
      `showActivityWithText` method. Default is `UIActivityIndicatorViewStyle.White`.
      */
-    public var activityIndicatorViewStyle: UIActivityIndicatorViewStyle = .White
+    public var activityIndicatorViewStyle: UIActivityIndicatorViewStyle = .white
     
 }
 
@@ -157,25 +157,25 @@ public struct RMTostadaStyle
  
  This framework is based on Toast-Swift pod by Charles Scalesse (https://github.com/scalessec/Toast-Swift).
  */
-public class RMTostada
+open class RMTostada
 {
     /**
      The default duration that the tostada view will remain on the screen. This applies only
      on the self dismissed tostada. Default is 3.0.
      */
-    public static var duration: NSTimeInterval = 3.0
+    open static var duration: TimeInterval = 3.0
     
     /**
      The default style that all the tostadas views will have if no style is specified.
      */
-    public static var style = RMTostadaStyle()
+    open static var style = RMTostadaStyle()
     
-    private static let sharedInstance = RMTostada()
+    fileprivate static let sharedInstance = RMTostada()
     
-    private var queue = [RMTostadaView]()
-    private let screenSize = UIScreen.mainScreen().bounds
+    fileprivate var queue = [RMTostadaView]()
+    fileprivate let screenSize = UIScreen.main.bounds
     
-    private init()
+    fileprivate init()
     {
         
     }
@@ -189,7 +189,7 @@ public class RMTostada
      - parameter text: The text that the tostada view will have
      - parameter completion: Code that will be executed after the tostada view is dismissed
      */
-    public class func showSelfDismissingWithText(text: String, completion: CompletionHandler? = nil)
+    open class func showSelfDismissingWithText(_ text: String, completion: CompletionHandler? = nil)
     {
         showSelfDismissingWithText(text, duration: duration, style: style, completion: completion)
     }
@@ -202,7 +202,7 @@ public class RMTostada
      - parameter duration: The duration that the tostada view will remain on the screen.
      - parameter completion: Code that will be executed after the tostada view is dismissed
      */
-    public class func showSelfDismissingWithText(text: String, duration: NSTimeInterval, completion: CompletionHandler? = nil)
+    open class func showSelfDismissingWithText(_ text: String, duration: TimeInterval, completion: CompletionHandler? = nil)
     {
         showSelfDismissingWithText(text, duration: duration, style: style, completion: completion)
     }
@@ -215,7 +215,7 @@ public class RMTostada
      - parameter style: The style that the tostada view will have
      - parameter completion: Code that will be executed after the tostada view is dismissed
      */
-    public class func showSelfDismissingWithText(text: String, style: RMTostadaStyle, completion: CompletionHandler? = nil)
+    open class func showSelfDismissingWithText(_ text: String, style: RMTostadaStyle, completion: CompletionHandler? = nil)
     {
         showSelfDismissingWithText(text, duration: duration, style: style, completion: completion)
     }
@@ -229,7 +229,7 @@ public class RMTostada
      - parameter style: The style that the tostada view will have
      - parameter completion: Code that will be executed after the tostada view is dismissed
      */
-    public class func showSelfDismissingWithText(text: String, duration: NSTimeInterval, style: RMTostadaStyle, completion: CompletionHandler? = nil)
+    open class func showSelfDismissingWithText(_ text: String, duration: TimeInterval, style: RMTostadaStyle, completion: CompletionHandler? = nil)
     {
         let tostada = sharedInstance.createTostadaWithText(text, style: style, activityIndicator: false)
         objc_sync_enter(sharedInstance)
@@ -246,7 +246,7 @@ public class RMTostada
      
      - returns: The id of the tostada view showed.
      */
-    public class func showWithText(text: String, style: RMTostadaStyle = style) -> String
+    open class func showWithText(_ text: String, style: RMTostadaStyle = style) -> String
     {
         let tostada = sharedInstance.createTostadaWithText(text, style: style, activityIndicator: false)
         objc_sync_enter(sharedInstance)
@@ -264,7 +264,7 @@ public class RMTostada
      
      - returns: The id of the tostada view showed.
      */
-    public class func showActivityWithText(text: String, style: RMTostadaStyle = style) -> String
+    open class func showActivityWithText(_ text: String, style: RMTostadaStyle = style) -> String
     {
         let tostada = sharedInstance.createTostadaWithText(text, style: style, activityIndicator: true)
         objc_sync_enter(sharedInstance)
@@ -278,7 +278,7 @@ public class RMTostada
      
      - parameter id: The id of the tostada view that will be dismissed
      */
-    public class func dismissWithId(id: String)
+    open class func dismissWithId(_ id: String)
     {
         let filtered = sharedInstance.queue.filter { $0.identifier() == id }
         if let first = filtered.first
@@ -291,9 +291,9 @@ public class RMTostada
     
     // MARK: - Helper methods
     
-    private func topView() -> UIView?
+    fileprivate func topView() -> UIView?
     {
-        if let view = UIApplication.sharedApplication().windows.first?.rootViewController?.view
+        if let view = UIApplication.shared.windows.first?.rootViewController?.view
         {
             return view
         }
@@ -302,16 +302,16 @@ public class RMTostada
     
     // MARK: - Create tostada
     
-    private func createTostadaWithText(text: String, style: RMTostadaStyle, activityIndicator: Bool) -> RMTostadaView
+    fileprivate func createTostadaWithText(_ text: String, style: RMTostadaStyle, activityIndicator: Bool) -> RMTostadaView
     {
         // Setup wrapper view
-        let wrapperView = RMTostadaView(frame: CGRectZero, fadeDuration: style.fadeDuration, shiftDuration: style.shiftDuration, verticalPadding: style.tostadaVerticalPadding)
+        let wrapperView = RMTostadaView(frame: CGRect.zero, fadeDuration: style.fadeDuration, shiftDuration: style.shiftDuration, verticalPadding: style.tostadaVerticalPadding)
         wrapperView.backgroundColor = style.backgroundColor
-        wrapperView.autoresizingMask = [.FlexibleLeftMargin, .FlexibleRightMargin, .FlexibleTopMargin, .FlexibleBottomMargin]
+        wrapperView.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin]
         wrapperView.layer.cornerRadius = style.cornerRadius
         if style.displayShadow
         {
-            wrapperView.layer.shadowColor = style.shadowColor.CGColor
+            wrapperView.layer.shadowColor = style.shadowColor.cgColor
             wrapperView.layer.shadowOpacity = style.shadowOpacity
             wrapperView.layer.shadowRadius = style.shadowRadius
             wrapperView.layer.shadowOffset = style.shadowOffset
@@ -322,9 +322,9 @@ public class RMTostada
         textLabel.text = text
         textLabel.numberOfLines = 1
         textLabel.font = style.font
-        textLabel.lineBreakMode = .ByTruncatingTail;
+        textLabel.lineBreakMode = .byTruncatingTail;
         textLabel.textColor = style.textColor
-        textLabel.backgroundColor = UIColor.clearColor()
+        textLabel.backgroundColor = UIColor.clear
         textLabel.sizeToFit()
         textLabel.frame = CGRect(x: style.contentHorizontalPadding, y: style.contentVerticalPadding, width: textLabel.frame.width, height: textLabel.frame.height)
         
@@ -384,17 +384,17 @@ public class RMTostada
     
     // MARK: - Tostadas queue
     
-    private func appendTostada(tostada: RMTostadaView)
+    fileprivate func appendTostada(_ tostada: RMTostadaView)
     {
         queue.append(tostada)
     }
     
-    private func removeTostada(tostada: RMTostadaView) -> Int?
+    fileprivate func removeTostada(_ tostada: RMTostadaView) -> Int?
     {
         objc_sync_enter(self)
-        if let index = queue.indexOf(tostada)
+        if let index = queue.index(of: tostada)
         {
-            queue.removeAtIndex(index)
+            queue.remove(at: index)
             objc_sync_exit(queue)
             return index
         }
@@ -404,7 +404,7 @@ public class RMTostada
     
     // MARK: - Display/hide tostada
     
-    private func displayTostada(tostada: RMTostadaView, selfDismissing: Bool, duration: NSTimeInterval?, completion: CompletionHandler?)
+    fileprivate func displayTostada(_ tostada: RMTostadaView, selfDismissing: Bool, duration: TimeInterval?, completion: CompletionHandler?)
     {
         if let topView = self.topView()
         {
@@ -417,20 +417,20 @@ public class RMTostada
             tostada.alpha = 0.0
             topView.addSubview(tostada)
             appendTostada(tostada)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                UIView.animateWithDuration(tostada.fadeDuration, delay: 0.0, options: [.CurveEaseOut], animations: { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
+                UIView.animate(withDuration: tostada.fadeDuration, delay: 0.0, options: [.curveEaseOut], animations: { () -> Void in
                     tostada.alpha = 1.0
                 }) { (finished) -> Void in
-                    if let duration = duration where selfDismissing
+                    if let duration = duration, selfDismissing
                     {
-                        NSTimer.scheduledTimerWithTimeInterval(duration, target: self, selector: #selector(RMTostada.tostadaTimerDidFinish(_:)), userInfo: dict, repeats: false)
+                        Timer.scheduledTimer(timeInterval: duration, target: self, selector: #selector(RMTostada.tostadaTimerDidFinish(_:)), userInfo: dict, repeats: false)
                     }
                 }
             })
         }
     }
     
-    @objc private func tostadaTimerDidFinish(timer: NSTimer)
+    @objc fileprivate func tostadaTimerDidFinish(_ timer: Timer)
     {
         if let dict = timer.userInfo as? [String: AnyObject]
         {
@@ -450,10 +450,10 @@ public class RMTostada
         }
     }
     
-    private func hideTostada(tostada: RMTostadaView, completion: CompletionHandler?)
+    fileprivate func hideTostada(_ tostada: RMTostadaView, completion: CompletionHandler?)
     {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            UIView.animateWithDuration(tostada.fadeDuration, delay: 0.0, options: [.CurveEaseIn], animations: { () -> Void in
+        DispatchQueue.main.async(execute: { () -> Void in
+            UIView.animate(withDuration: tostada.fadeDuration, delay: 0.0, options: [.curveEaseIn], animations: { () -> Void in
                 tostada.alpha = 0.0
             }) { [unowned self] (didFinish: Bool) -> Void in
                 tostada.removeFromSuperview()
@@ -470,7 +470,7 @@ public class RMTostada
     
     // MARK: - Move tostadas which are on the queue
     
-    private func shiftTostadasFromIndex(index: Int)
+    fileprivate func shiftTostadasFromIndex(_ index: Int)
     {
         for index in index ..< queue.count
         {
@@ -479,14 +479,14 @@ public class RMTostada
         }
     }
     
-    private func shiftTostada(tostada: RMTostadaView)
+    fileprivate func shiftTostada(_ tostada: RMTostadaView)
     {
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            UIView.animateWithDuration(tostada.shiftDuration) {
+        DispatchQueue.main.async(execute: { () -> Void in
+            UIView.animate(withDuration: tostada.shiftDuration, animations: {
                 let yPos = tostada.frame.origin.y - tostada.verticalPadding - tostada.frame.size.height
                 let frame = CGRect(x: tostada.frame.origin.x, y: yPos, width: tostada.frame.size.width, height: tostada.frame.size.height)
                 tostada.frame = frame
-            }
+            }) 
         })
     }
 }

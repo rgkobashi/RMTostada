@@ -10,11 +10,11 @@ import UIKit
 
 class RMTostadaView: UIView
 {
-    var fadeDuration: NSTimeInterval!
-    var shiftDuration: NSTimeInterval!
+    var fadeDuration: TimeInterval!
+    var shiftDuration: TimeInterval!
     var verticalPadding: CGFloat!
     
-    init(frame: CGRect, fadeDuration: NSTimeInterval, shiftDuration: NSTimeInterval, verticalPadding: CGFloat)
+    init(frame: CGRect, fadeDuration: TimeInterval, shiftDuration: TimeInterval, verticalPadding: CGFloat)
     {
         super.init(frame: frame)
         self.fadeDuration = fadeDuration
@@ -29,7 +29,7 @@ class RMTostadaView: UIView
     
     func identifier() -> String
     {
-        return String(ObjectIdentifier(self).uintValue)
+        return String(UInt(bitPattern: ObjectIdentifier(self)))
     }
 }
 
