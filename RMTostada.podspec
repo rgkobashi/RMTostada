@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "RMTostada"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "RMTostada framework provides methods to display multiple tostadas views (toast views) with different styles at the same time."
 
   # This description is used to generate tags and improve search results.
