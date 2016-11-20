@@ -30,6 +30,16 @@ private class RMClosureWrapper<T>
 public struct RMTostadaStyle
 {
     /**
+     Creates an instance of `RMTostadaStyle` with the default values.
+     
+     - returns: An instance of RMTostadaStyle.
+     */
+    public init()
+    {
+        
+    }
+    
+    /**
      The background color. Default is `UIColor.blackColor()` at 80% opacity.
      */
     public var backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.8)
