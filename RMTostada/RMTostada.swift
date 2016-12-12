@@ -156,7 +156,7 @@ public struct RMTostadaStyle
  (`UIApplication.sharedApplication().windows.first?.rootViewController`)  so it can be used on 
  an UITabBarController based application and all the tostadas views will be visible from every tab.
  
- This framework is based on Toast-Swift pod by Charles Scalesse (https://github.com/scalessec/Toast-Swift).
+ The styles were based on Toast-Swift pod by Charles Scalesse (https://github.com/scalessec/Toast-Swift).
  */
 open class RMTostada
 {

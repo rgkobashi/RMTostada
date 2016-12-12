@@ -10,7 +10,7 @@ Basically there are three different tostadas views:
 
 All the tostadas will be displayed on the rootViewController view, if there is one `(UIApplication.sharedApplication().windows.first?.rootViewController)` so it can be used on an `UITabBarController` based application and all the tostadas views will be visible from every tab.
 
-This framework is based on [Toast-Swift](https://github.com/scalessec/Toast-Swift) pod by Charles Scalesse.
+The styles were based on [Toast-Swift](https://github.com/scalessec/Toast-Swift) pod by Charles Scalesse.
 
 ## Screenshots
 
